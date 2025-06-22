@@ -38,9 +38,10 @@ export default async function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-geist-sans flex flex-col items-center bg-white p-4 text-black antialiased`}>
-        <Dictionary dict={dict} locale={locale} />
-        <LanguagePicker />
-        {children}
+        <Dictionary dict={dict} locale={locale}>
+          <LanguagePicker />
+          {children}
+        </Dictionary>
       </body>
     </html>
   )

@@ -18,7 +18,10 @@ export default function Home() {
         <h2 className="text-center text-3xl font-extrabold">{parseT('from-sound-to-script')}</h2>
         <p>
           {parseT(
-            'spoken-languages-likely-began-as-simple-sounds-tied-to-survival-over-time-these-sounds-grew-into-structured-speech-and-later-written-scripts-today-there-are-over-7-000-spoken-languages-across-the-world-each-with-its-own-story',
+            'spoken-languages-likely-began-as-simple-sounds-tied-to-survival-over-time-these-sounds-grew-into-structured-speech-and-later-written-scripts-today-there-are-over-number-spoken-languages-across-the-world-each-with-its-own-story',
+            {
+              variables: { number: 7000 },
+            },
           )}
         </p>
 
@@ -27,12 +30,6 @@ export default function Home() {
             customElements: {
               span: (props) => <span className="rounded-md bg-lime-200 px-1" {...props} />,
             },
-          })}
-        </p>
-
-        <p>
-          {parseT('there-are-approximately-number-languages-spoken-around-the-world-today', {
-            variables: { number: 7000 },
           })}
         </p>
       </div>
