@@ -1,8 +1,10 @@
 
   export type Dictionary = {
     "before-we-start": string;
-    "select-your-language": string;
     "replacing-special-characters-in-a-key-as-text": string;
+    "select-your-language": string;
+    "english": string;
+    "french": string;
   }
 
   type Dictionaries = {

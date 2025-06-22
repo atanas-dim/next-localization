@@ -11,11 +11,14 @@
   },
   "dependencies": {
     "dotenv": "^16.5.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "html-react-parser": "^5.2.5",
     "next": "15.3.4",
     "node-fetch": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.13",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.3.1",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
