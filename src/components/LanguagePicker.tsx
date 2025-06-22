@@ -22,7 +22,11 @@ const LanguagePicker: FC = () => {
         {Object.values(LANGUAGES).map((lang, index) => {
           const isActive = locale === lang.locale
           return (
-            <Link key={'lang-btn-' + index} href={'/' + lang.locale} className="flex flex-col items-center">
+            <Link
+              key={'lang-btn-' + index}
+              scroll={false}
+              href={'/' + lang.locale}
+              className="flex flex-col items-center">
               <span
                 className={twJoin(
                   'text-7xl leading-[0.8] transition-all duration-300',
