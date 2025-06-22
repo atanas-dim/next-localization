@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { type FC } from 'react'
 import { twJoin } from 'tailwind-merge'
 
@@ -13,8 +14,11 @@ const LANGUAGES: Record<AvailableLocale, { icon: string; labelKey: keyof Diction
 }
 
 const LanguagePicker: FC = () => {
+  const pathname = usePathname()
+
   const locale = useDictionaryStore((s) => s.locale)
   const dict = useDictionaryStore((s) => s.dict)
+
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col items-center rounded-2xl bg-lime-50 p-4">
       <span className="text-sm font-extrabold uppercase">{dict?.['select-your-language']}</span>
@@ -25,7 +29,7 @@ const LanguagePicker: FC = () => {
             <Link
               key={'lang-btn-' + index}
               scroll={false}
-              href={'/' + lang.locale}
+              href={pathname.replace('/' + locale, '/' + lang.locale)}
               className="flex flex-col items-center">
               <span
                 className={twJoin(
