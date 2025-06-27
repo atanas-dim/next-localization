@@ -2,7 +2,6 @@ import { resolveDictionary } from '@/utils/dictionary'
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { parseT } = await resolveDictionary(await params)
-  // className="text-3xl font-extrabold"
   return (
     <main className="flex justify-center">
       <article className="flex max-w-2xl flex-col gap-3 p-8 underline-offset-4 [&_a]:whitespace-nowrap [&_a]:underline [&_h2]:mt-3 [&_h2]:text-3xl [&_h2]:font-extrabold">
