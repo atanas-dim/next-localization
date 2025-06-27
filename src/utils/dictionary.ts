@@ -17,7 +17,7 @@ export type CustomElements = {
 }
 
 export const parseT = (copy: string, variables?: Variables, customElements?: CustomElements): React.ReactNode => {
-  const filledTemplate = (copy as string).replace(/\{(\w+)\}/g, (_, variable) => String(variables?.[variable]) || '')
+  const filledTemplate = (copy as string).replace(/\{{(\w+)\}}/g, (_, variable) => String(variables?.[variable]) || '')
 
   const options: HTMLReactParserOptions = {
     replace: (node: DOMNode) => {
@@ -68,6 +68,6 @@ export async function resolveDictionary(params: { locale: string }): Promise<Res
   const locale = getAvailableLocale(params)
   const dict = await getDictionary(locale)
   const parseT = createParseT(dict) // ✅ assign function, do NOT invoke it here
-  console.log('SERVER')
+
   return { locale, dict, parseT }
 }

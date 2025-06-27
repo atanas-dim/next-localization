@@ -15,14 +15,13 @@ const LANGUAGES: Record<AvailableLocale, { icon: string; labelKey: keyof Diction
 
 const LanguagePicker: FC = () => {
   const pathname = usePathname()
-
   const locale = useDictionaryStore((s) => s.locale)
   const dict = useDictionaryStore((s) => s.dict)
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col items-center rounded-2xl bg-lime-50 p-4">
+    <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-2 rounded-2xl">
       <span className="text-sm font-extrabold uppercase">{dict?.['select-your-language']}</span>
-      <div className="flex gap-4 p-4">
+      <div className="flex gap-4">
         {Object.values(LANGUAGES).map((lang, index) => {
           const isActive = locale === lang.locale
           return (
@@ -30,15 +29,15 @@ const LanguagePicker: FC = () => {
               key={'lang-btn-' + index}
               scroll={false}
               href={pathname.replace('/' + locale, '/' + lang.locale)}
-              className="flex flex-col items-center">
+              className="flex w-17 flex-col items-center">
               <span
                 className={twJoin(
-                  'text-7xl leading-[0.8] transition-all duration-300',
+                  'text-5xl leading-[0.8] transition-all duration-300',
                   !isActive && 'scale-90 grayscale-100',
                 )}>
                 {lang.icon}
               </span>
-              <span className="text-sm font-extrabold uppercase">{dict?.[lang.labelKey]}</span>
+              <span className="text-xs font-extrabold">{dict?.[lang.labelKey]}</span>
             </Link>
           )
         })}
