@@ -5,6 +5,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <main className="flex justify-center">
       <article className="flex max-w-2xl flex-col gap-3 p-8 underline-offset-4 [&_a]:whitespace-nowrap [&_a]:underline [&_h2]:mt-3 [&_h2]:text-3xl [&_h2]:font-extrabold">
+        <span className="italic">This is server-side content</span>
         <h1 className="text-4xl font-extrabold">{parseT('a-brief-history-of-languages')}</h1>
         <h2>{parseT('the-origins-of-language')}</h2>
         <p>
