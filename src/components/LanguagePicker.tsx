@@ -4,24 +4,21 @@ import { usePathname } from 'next/navigation'
 import { type FC } from 'react'
 import { twJoin } from 'tailwind-merge'
 
-import { Dictionary } from '@/dictionaries'
 import useDictionaryStore from '@/hooks/useDictionaryStore'
 import { AvailableLocale, Locale } from '@/resources/locales'
 
-const LANGUAGES: Record<AvailableLocale, { icon: string; labelKey: keyof Dictionary; locale: AvailableLocale }> = {
-  [Locale.English]: { icon: '🇬🇧', labelKey: 'english', locale: Locale.English },
-  [Locale.French]: { icon: '🇫🇷', labelKey: 'french', locale: Locale.French },
+const LANGUAGES: Record<AvailableLocale, { icon: string; label: string; locale: AvailableLocale }> = {
+  [Locale.English]: { icon: '🇬🇧', label: 'English', locale: Locale.English },
+  [Locale.French]: { icon: '🇫🇷', label: 'Français', locale: Locale.French },
 }
 
 const LanguagePicker: FC = () => {
   const pathname = usePathname()
   const locale = useDictionaryStore((s) => s.locale)
-  const dict = useDictionaryStore((s) => s.dict)
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-2 rounded-2xl">
-      <span className="text-sm font-extrabold uppercase">{dict?.['select-your-language']}</span>
-      <div className="flex gap-4">
+    <div className="mx-auto flex w-full max-w-2xl justify-center gap-2 rounded-2xl px-4 sm:px-6">
+      <div className="flex gap-4 rounded-2xl bg-white p-2">
         {Object.values(LANGUAGES).map((lang, index) => {
           const isActive = locale === lang.locale
           return (
@@ -37,7 +34,7 @@ const LanguagePicker: FC = () => {
                 )}>
                 {lang.icon}
               </span>
-              <span className="text-xs font-extrabold">{dict?.[lang.labelKey]}</span>
+              <span className="text-xs font-extrabold">{lang.label}</span>
             </Link>
           )
         })}

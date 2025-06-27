@@ -1,16 +1,23 @@
 import '@/app/globals.css'
 
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Limelight, Monoton, Noto_Serif } from 'next/font/google'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const notoSerif = Noto_Serif({
+  variable: '--font-noto-serif',
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const monoton = Monoton({
+  variable: '--font-monoton',
   subsets: ['latin'],
+  weight: ['400'],
+})
+
+const limelight = Limelight({
+  variable: '--font-limelight',
+  subsets: ['latin'],
+  weight: ['400'],
 })
 
 export const metadata: Metadata = {
@@ -26,7 +33,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-geist-sans flex flex-col items-center bg-white p-4 text-black antialiased`}>
+        className={`${notoSerif.variable} ${monoton.variable} ${limelight.variable} flex flex-col items-center bg-stone-100 p-4 text-black antialiased`}>
         {children}
       </body>
     </html>

@@ -1,5 +1,23 @@
 @import 'tailwindcss';
 
 @theme inline {
-  --font-geist-sans: var(--font-geist-sans);
+  --font-noto-serif: var(--font-noto-serif);
+  --font-monoton: var(--font-monoton);
+  --font-limelight: var(--font-limelight);
+}
+
+body {
+  @apply font-noto-serif;
+}
+
+h1 {
+  @apply font-monoton;
+}
+
+h2 {
+  @apply font-limelight;
+}
+
+p {
+  @apply text-pretty;
 }
