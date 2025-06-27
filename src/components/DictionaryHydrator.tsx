@@ -1,22 +1,22 @@
 'use client'
 
-import { type FC, type PropsWithChildren, useLayoutEffect } from 'react'
+import { type FC, type PropsWithChildren, useEffect } from 'react'
 
 import { type Dictionary } from '@/dictionaries'
 import useDictionaryStore from '@/hooks/useDictionaryStore'
 import { AvailableLocale } from '@/resources/locales'
 
-type DictionaryProps = {
+type DictionaryHydratorProps = {
   dict: Dictionary
   locale: AvailableLocale
 }
 
-const Dictionary: FC<PropsWithChildren<DictionaryProps>> = ({ children, dict, locale }) => {
+const DictionaryHydrator: FC<PropsWithChildren<DictionaryHydratorProps>> = ({ children, dict, locale }) => {
   const setDict = useDictionaryStore((state) => state.setDict)
   const setLocale = useDictionaryStore((state) => state.setLocale)
   const storedDict = useDictionaryStore((s) => s.dict)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setDict(dict)
     setLocale(locale)
   }, [dict, locale, setDict, setLocale])
@@ -25,4 +25,4 @@ const Dictionary: FC<PropsWithChildren<DictionaryProps>> = ({ children, dict, lo
   return null
 }
 
-export default Dictionary
+export default DictionaryHydrator

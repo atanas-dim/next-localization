@@ -1,27 +1,17 @@
-// hooks/useParseT.ts
-import { ReactNode, useCallback } from 'react'
+import { useCallback } from 'react'
 
 import { Dictionary } from '@/dictionaries'
-import { CustomElements, parseT as parseTHelper, Variables } from '@/utils/dictionary'
+import useDictionaryStore from '@/hooks/useDictionaryStore'
+import { createParseT, CustomElements, Variables } from '@/utils/dictionary'
 
-import useDictionaryStore from './useDictionaryStore'
-
-export type ParseTKey = keyof Dictionary
-export type ParseTOptions = {
-  variables?: Variables
-  customElements?: CustomElements
-}
-
-export type ParseTFunc = (key: ParseTKey, options?: ParseTOptions) => ReactNode
-
-export function useParseT(): ParseTFunc {
-  const dict = useDictionaryStore((s) => s.dict)
+export function useParseT() {
+  const dictFromStore = useDictionaryStore((s) => s.dict)
 
   return useCallback(
-    (key, options = {}) => {
-      const { variables, customElements } = options
-      return parseTHelper(!!dict ? dict[key] : key, variables, customElements)
+    (key: keyof Dictionary, options?: { variables?: Variables; customElements?: CustomElements }) => {
+      const dict = dictFromStore ?? ({} as Dictionary)
+      return createParseT(dict)(key, options)
     },
-    [dict],
+    [dictFromStore],
   )
 }

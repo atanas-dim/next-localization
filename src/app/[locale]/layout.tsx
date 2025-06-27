@@ -1,7 +1,6 @@
-import Dictionary from '@/components/Dictionary'
+import DictionaryHydrator from '@/components/DictionaryHydrator'
 import LanguagePicker from '@/components/LanguagePicker'
-import { getDictionary } from '@/dictionaries'
-import { getLocale } from '@/utils/locales'
+import { resolveDictionary } from '@/utils/dictionary'
 
 export default async function LocaleLayout({
   children,
@@ -10,16 +9,14 @@ export default async function LocaleLayout({
   children: React.ReactNode
   params: Promise<{ locale: string }>
 }>) {
-  const parameters = await params
-  const locale = await getLocale(parameters)
-  const dict = await getDictionary(locale)
+  const { dict, locale } = await resolveDictionary(await params)
 
   return (
     <>
-      <Dictionary dict={dict} locale={locale}>
+      <DictionaryHydrator dict={dict} locale={locale}>
         <LanguagePicker />
         {children}
-      </Dictionary>
+      </DictionaryHydrator>
     </>
   )
 }
