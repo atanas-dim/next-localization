@@ -33,7 +33,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${notoSerif.variable} ${monoton.variable} ${limelight.variable} flex flex-col items-center bg-stone-100 p-4 text-black antialiased`}>
+        className={`${notoSerif.variable} ${monoton.variable} ${limelight.variable} flex flex-col items-center bg-stone-100 text-black antialiased`}>
         {children}
       </body>
     </html>

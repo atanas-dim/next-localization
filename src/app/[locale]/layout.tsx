@@ -1,5 +1,5 @@
 import DictionaryHydrator from '@/components/DictionaryHydrator'
-import LanguagePicker from '@/components/LanguagePicker'
+import Header from '@/components/Header'
 import { resolveDictionary } from '@/utils/dictionary'
 
 export default async function LocaleLayout({
@@ -14,7 +14,7 @@ export default async function LocaleLayout({
   return (
     <>
       <DictionaryHydrator dict={dict} locale={locale}>
-        <LanguagePicker />
+        <Header />
         {children}
       </DictionaryHydrator>
     </>

@@ -17,7 +17,7 @@ const LanguagePicker: FC = () => {
   const locale = useDictionaryStore((s) => s.locale)
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl justify-center gap-2 rounded-2xl px-4 sm:px-6">
+    <div className="flex justify-center gap-2 rounded-2xl">
       <div className="flex gap-4 rounded-2xl bg-white p-2">
         {Object.values(LANGUAGES).map((lang, index) => {
           const isActive = locale === lang.locale

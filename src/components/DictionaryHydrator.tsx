@@ -21,7 +21,7 @@ const DictionaryHydrator: FC<PropsWithChildren<DictionaryHydratorProps>> = ({ ch
     setLocale(locale)
   }, [dict, locale, setDict, setLocale])
 
-  if (!!storedDict) return children
+  return children
   return null
 }
 
