@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import { type FC } from 'react'
 import { twJoin } from 'tailwind-merge'
 
-import useDictionaryStore from '@/hooks/useDictionaryStore'
+import { useDictionary } from '@/components/DictionaryProvider'
 import { AvailableLocale, Locale } from '@/resources/locales'
 
 const LANGUAGES: Record<AvailableLocale, { icon: string; label: string; locale: AvailableLocale }> = {
@@ -14,7 +14,7 @@ const LANGUAGES: Record<AvailableLocale, { icon: string; label: string; locale: 
 
 const LanguagePicker: FC = () => {
   const pathname = usePathname()
-  const locale = useDictionaryStore((s) => s.locale)
+  const { locale } = useDictionary()
 
   return (
     <div className="flex justify-center gap-2 rounded-2xl">

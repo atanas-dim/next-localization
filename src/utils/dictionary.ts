@@ -1,10 +1,17 @@
-import parse, { DOMNode, domToReact, HTMLReactParserOptions } from 'html-react-parser'
-import { cloneElement, createElement, HTMLAttributes, isValidElement, ReactElement } from 'react'
+import parse, { type DOMNode, domToReact, type HTMLReactParserOptions } from 'html-react-parser'
+import {
+  cloneElement,
+  createElement,
+  type HTMLAttributes,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+} from 'react'
 
-import { Dictionary, getDictionary } from '@/dictionaries'
-import { AvailableLocale } from '@/resources/locales'
+import { type Dictionary, getDictionary } from '@/dictionaries'
+import { type AvailableLocale } from '@/resources/locales'
 
-import { getAvailableLocale as getAvailableLocale } from './locales'
+import { getAvailableLocale } from './locales'
 
 export type Variables = {
   [key: string]: string | number
@@ -16,7 +23,7 @@ export type CustomElements = {
   [tag: string]: ((props: CustomElementProps) => ReactElement<CustomElementProps, string>) | ReactElement
 }
 
-export const parseT = (copy: string, variables?: Variables, customElements?: CustomElements): React.ReactNode => {
+export const parseT = (copy: string, variables?: Variables, customElements?: CustomElements): ReactNode => {
   const filledTemplate = (copy as string).replace(/\{{(\w+)\}}/g, (_, variable) => String(variables?.[variable]) || '')
 
   const options: HTMLReactParserOptions = {

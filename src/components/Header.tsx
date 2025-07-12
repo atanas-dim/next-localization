@@ -4,8 +4,8 @@ import { usePathname } from 'next/navigation'
 import { type FC } from 'react'
 import { twJoin } from 'tailwind-merge'
 
+import { useDictionary } from '@/components/DictionaryProvider'
 import LanguagePicker from '@/components/LanguagePicker'
-import useDictionaryStore from '@/hooks/useDictionaryStore'
 
 const LINKS: { label: string; path: string }[] = [
   {
@@ -19,7 +19,7 @@ const LINKS: { label: string; path: string }[] = [
 ]
 
 const Header: FC = () => {
-  const locale = useDictionaryStore((s) => s.locale)
+  const { locale } = useDictionary()
   const pathname = usePathname()
 
   return (
