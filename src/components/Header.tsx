@@ -6,21 +6,18 @@ import { twJoin } from 'tailwind-merge'
 
 import { useDictionary } from '@/components/DictionaryProvider'
 import LanguagePicker from '@/components/LanguagePicker'
+import { Dictionary } from '@/dictionaries'
+import { useParseT } from '@/hooks/useParseT'
 
-const LINKS: { label: string; path: string }[] = [
-  {
-    label: 'Server',
-    path: '',
-  },
-  {
-    label: 'Client',
-    path: '/client',
-  },
+const LINKS: { labelKey: keyof Dictionary; path: string }[] = [
+  { labelKey: 'server-side', path: '' },
+  { labelKey: 'client-side', path: '/client-side' },
 ]
 
 const Header: FC = () => {
   const { locale } = useDictionary()
   const pathname = usePathname()
+  const parseT = useParseT()
 
   return (
     <header className="mx-auto flex w-full max-w-2xl items-center justify-between p-4 sm:p-6">
@@ -34,7 +31,7 @@ const Header: FC = () => {
               key={`nav-link-${index}`}
               href={href}
               className={twJoin(isActive ? 'underline underline-offset-2' : 'opacity-50')}>
-              {link.label}
+              {parseT(link.labelKey)}
             </Link>
           )
         })}

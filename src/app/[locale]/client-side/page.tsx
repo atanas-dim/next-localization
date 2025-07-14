@@ -1,7 +1,10 @@
-import { resolveDictionary } from '@/utils/dictionary'
+'use client'
 
-export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  const { parseT } = await resolveDictionary(await params)
+import { useParseT } from '@/hooks/useParseT'
+
+export default function Home() {
+  const parseT = useParseT()
+
   return (
     <main className="flex justify-center">
       <article className="flex max-w-2xl flex-col gap-3 p-4 underline-offset-4 sm:p-6 [&_a]:whitespace-nowrap [&_a]:underline [&_h2]:mt-3 [&_h2]:text-3xl [&_h2]:font-extrabold">
