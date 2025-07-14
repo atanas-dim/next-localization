@@ -17,13 +17,13 @@ export type Variables = {
   [key: string]: string | number
 }
 
-export type CustomElementProps = HTMLAttributes<HTMLElement>
+type CustomElementProps = HTMLAttributes<HTMLElement>
 
 export type CustomElements = {
   [tag: string]: ((props: CustomElementProps) => ReactElement<CustomElementProps, string>) | ReactElement
 }
 
-export const parseT = (copy: string, variables?: Variables, customElements?: CustomElements): ReactNode => {
+const parseT = (copy: string, variables?: Variables, customElements?: CustomElements): ReactNode => {
   const filledTemplate = (copy as string).replace(/\{{(\w+)\}}/g, (_, variable) => String(variables?.[variable]) || '')
 
   const options: HTMLReactParserOptions = {
