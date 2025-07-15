@@ -17,28 +17,26 @@ const LanguagePicker: FC = () => {
   const { locale } = useDictionary()
 
   return (
-    <div className="flex justify-center gap-2 rounded-2xl">
-      <div className="flex gap-4 rounded-2xl bg-white p-2">
-        {Object.values(LANGUAGES).map((lang, index) => {
-          const isActive = locale === lang.locale
-          return (
-            <Link
-              key={'lang-btn-' + index}
-              scroll={false}
-              href={pathname.replace('/' + locale, '/' + lang.locale)}
-              className="flex w-17 flex-col items-center">
-              <span
-                className={twJoin(
-                  'text-5xl leading-[0.8] transition-all duration-300',
-                  !isActive && 'scale-90 grayscale-100',
-                )}>
-                {lang.icon}
-              </span>
-              <span className="text-xs font-extrabold">{lang.label}</span>
-            </Link>
-          )
-        })}
-      </div>
+    <div className="flex gap-1 rounded-2xl bg-white p-2">
+      {Object.values(LANGUAGES).map((lang, index) => {
+        const isActive = locale === lang.locale
+        return (
+          <Link
+            key={'lang-btn-' + index}
+            scroll={false}
+            href={pathname.replace('/' + locale, '/' + lang.locale)}
+            className="flex w-15 flex-col items-center">
+            <span
+              className={twJoin(
+                'text-4xl leading-[0.8] transition-all duration-300',
+                !isActive && 'scale-90 grayscale-100',
+              )}>
+              {lang.icon}
+            </span>
+            <span className="text-xs font-extrabold">{lang.label}</span>
+          </Link>
+        )
+      })}
     </div>
   )
 }
