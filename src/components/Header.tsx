@@ -6,7 +6,7 @@ import { twJoin } from 'tailwind-merge'
 
 import { useDictionary } from '@/components/DictionaryProvider'
 import LanguagePicker from '@/components/LanguagePicker'
-import { Dictionary } from '@/dictionaries'
+import { type Dictionary } from '@/dictionaries'
 import { useParseT } from '@/hooks/useParseT'
 
 const LINKS: { labelKey: keyof Dictionary; path: string }[] = [

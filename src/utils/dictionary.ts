@@ -10,8 +10,7 @@ import {
 
 import { type Dictionary, getDictionary } from '@/dictionaries'
 import { type AvailableLocale } from '@/resources/locales'
-
-import { getAvailableLocale } from './locales'
+import { getAvailableLocale } from '@/utils/locales'
 
 export type Variables = {
   [key: string]: string | number
