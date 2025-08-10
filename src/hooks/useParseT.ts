@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 
 import { useDictionary } from '@/components/DictionaryProvider'
-import { Dictionary } from '@/dictionaries'
-import { createParseT, CustomElements, Variables } from '@/utils/dictionary'
+import { type Dictionary } from '@/dictionaries'
+import { createParseT, type CustomElements, type Variables } from '@/utils/dictionary'
 
 export function useParseT() {
   const { dict: dictFromStore } = useDictionary()

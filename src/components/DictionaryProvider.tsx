@@ -1,9 +1,9 @@
 'use client'
 
-import React, { createContext, type PropsWithChildren, useContext } from 'react'
+import { createContext, type PropsWithChildren, useContext } from 'react'
 
-import { Dictionary } from '@/dictionaries'
-import { AvailableLocale } from '@/resources/locales'
+import { type Dictionary } from '@/dictionaries'
+import { type AvailableLocale } from '@/resources/locales'
 
 type DictionaryContextType = {
   dict: Dictionary
