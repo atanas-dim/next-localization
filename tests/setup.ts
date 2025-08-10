@@ -8,8 +8,20 @@ jest.mock('next/navigation', () => ({
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: ({ href, children, ...props }: any) => {
+  default: ({
+    href,
+    children,
+    scroll,
+    prefetch,
+    replace,
+    shallow,
+    locale,
+    legacyBehavior,
+    passHref,
+    ...props
+  }: any) => {
     // Simplify <Link> to a plain anchor for tests (avoid JSX in setup file)
+    // Omit Next.js-only props like `scroll` that are not valid on <a>
     return React.createElement('a', { href, ...props }, children)
   },
 }))
